@@ -1,0 +1,6 @@
+@MusicasCatolicasAPI_HostAddress = http://localhost:5027
+
+GET {{MusicasCatolicasAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
