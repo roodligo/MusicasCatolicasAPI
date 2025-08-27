@@ -70,7 +70,7 @@ namespace MusicasCatolicasAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Musica>> Create(SimpleDto simpleDto)
+        public async Task<ActionResult<Categoria>> Create(SimpleDto simpleDto)
         {
             if (simpleDto == null)
                 return BadRequest("O objeto não pode ser nulo");
@@ -87,8 +87,8 @@ namespace MusicasCatolicasAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = categoria.Id }, categoria);
         }
 
-        [HttpPost("/cadastro-em-massa")]
-        public async Task<ActionResult<Musica>> CreateEmMassa(List<SimpleDto> simpleDto)
+        [HttpPost("cadastro-em-massa")]
+        public async Task<ActionResult<Categoria>> CreateEmMassa(List<SimpleDto> simpleDto)
         {
             if (simpleDto == null)
                 return BadRequest("O objeto não pode ser nulo");

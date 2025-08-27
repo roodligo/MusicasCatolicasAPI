@@ -87,6 +87,27 @@ namespace MusicasCatolicasAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);
         }
 
+        [HttpPost("cadastro-em-massa")]
+        public async Task<ActionResult<SubCategoria>> CreateEmMassa(List<SimpleDto> simpleDto)
+        {
+            if (simpleDto == null)
+                return BadRequest("O objeto não pode ser nulo");
+
+            foreach (var dto in simpleDto)
+            {
+                var subCategoria = new SubCategoria
+                {
+                    Guid = Guid.NewGuid(),
+                    Nome = dto.Nome
+                };
+                _context.SubCategorias.Add(subCategoria);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Created();
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] SimpleDto simpleDto)
         {
