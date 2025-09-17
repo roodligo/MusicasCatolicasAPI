@@ -103,6 +103,7 @@ namespace MusicasCatolicasAPI.Controllers
                 LivroNome = musicaDto.LivroNome,
                 Observacao = musicaDto.Observacao,
                 Cifra = musicaDto.Cifra,
+                Letra = musicaDto.Letra,
                 Partitura = musicaDto.Partitura,
                 Video = musicaDto.Video,
                 Mid = musicaDto.Mid
@@ -134,6 +135,7 @@ namespace MusicasCatolicasAPI.Controllers
                     LivroNome = dto.LivroNome,
                     Observacao = dto.Observacao,
                     Cifra = dto.Cifra,
+                    Letra = dto.Letra,
                     Partitura = dto.Partitura,
                     Video = dto.Video,
                     Mid = dto.Mid
@@ -164,6 +166,7 @@ namespace MusicasCatolicasAPI.Controllers
             existente.LivroNome = musicaDto.LivroNome;
             existente.Observacao = musicaDto.Observacao;
             existente.Cifra = musicaDto.Cifra;
+            existente.Letra = musicaDto.Letra;
             existente.Partitura = musicaDto.Partitura;
             existente.Video = musicaDto.Video;
             existente.Mid = musicaDto.Mid;
