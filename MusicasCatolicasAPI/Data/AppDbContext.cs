@@ -38,6 +38,11 @@ namespace MusicasCatolicasAPI.Data
                 .HasForeignKey(p => p.SubCategoriaId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Musica>()
+                .HasOne(p => p.SubCategoria)
+                .WithMany()
+                .HasForeignKey(p => p.SubCategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicasCatolicasAPI.Data;
 
@@ -10,9 +11,11 @@ using MusicasCatolicasAPI.Data;
 namespace MusicasCatolicasAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250917133027_IdCategoriaNaSub")]
+    partial class IdCategoriaNaSub
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
@@ -113,7 +116,7 @@ namespace MusicasCatolicasAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoriaId")
+                    b.Property<int?>("CategoriaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("DataAtualizacao")
@@ -130,8 +133,6 @@ namespace MusicasCatolicasAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoriaId");
 
                     b.ToTable("SubCategorias");
                 });
@@ -153,17 +154,6 @@ namespace MusicasCatolicasAPI.Migrations
                     b.Navigation("Categoria");
 
                     b.Navigation("SubCategoria");
-                });
-
-            modelBuilder.Entity("MusicasCatolicasAPI.Models.SubCategoria", b =>
-                {
-                    b.HasOne("MusicasCatolicasAPI.Models.Categoria", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categoria");
                 });
 #pragma warning restore 612, 618
         }
